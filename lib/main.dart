@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
           "is_completed": false
         }),
       );
-
       if (response.statusCode == 201) {
         Get.snackbar("Success", "Todo added successfully");
         _titleController.clear();
@@ -74,7 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _fetchData() async {
     try {
       final response = await http.get(Uri.parse(baseUrl));
-
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         if (json.containsKey('items')) {
@@ -260,8 +258,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () =>
-                                    _deleteData(data[index]['_id']),
+                                onPressed: () =>Get.defaultDialog(
+                                  title: 'Are you sure deleted',
+                                  content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                     TextButton(onPressed: ()async{
+                                      await _deleteData(data[index]['_id']);
+                                       Get.back();
+                                     }, child: Text('Yes')),
+                                     TextButton(onPressed: ()=>Get.back(), child: Text('No')),
+                                    ],
+                                  )
+                                ),
                                 icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
