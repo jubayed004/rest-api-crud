@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   _updatedDescriptionController,
                                               decoration: const InputDecoration(
                                                   hintText:
-                                                      "Enter description"),
+                                                      "Enter descriptions"),
                                             ),
                                             SizedBox(
                                               height: 10,
