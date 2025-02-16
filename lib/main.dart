@@ -246,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         _updatedDescriptionController
                                                             .text);
                                                   },
-                                                  child: Text('Updatee To Do')),
+                                                  child: Text('Update To Do')),
                                             )
                                           ],
                                         ),
